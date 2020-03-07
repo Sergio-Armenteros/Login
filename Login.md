@@ -67,7 +67,7 @@
         $id = session_id();
         $user = $_SERVER['HTTP_USER_AGENT']; 
         
-        //Meter datos sobre el Usuario en una base de datos
+        //Meter los datos sobre el Usuario en la base de datos
         $var = "datos.ini";
 	$base = parse_ini_file($var);		
 	$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);		
