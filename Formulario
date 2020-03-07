@@ -1,4 +1,4 @@
-#Formulario
+### Formulario
 ```html
 <center>
 <form action="index.php" method="post">
