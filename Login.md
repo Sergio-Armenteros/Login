@@ -69,36 +69,34 @@
         
         //Meter datos sobre ek Usuario en una base de datos
         $var = "datos.ini";
-		$base = parse_ini_file($var);		
-		$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);		
-		$con = $php->prepare("INSERT INTO cookie VALUES (1,:tex,:url,:usuarios,:user,:nombre);");
-		$con->bindParam(':tex',$id);
+	$base = parse_ini_file($var);		
+	$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);		
+	$con = $php->prepare("INSERT INTO cookie VALUES (1,:tex,:url,:usuarios,:user,:nombre);");
+	$con->bindParam(':tex',$id);
         $con->bindParam(':url',$ruta);
         $con->bindParam(':usuarios',$str);
         $con->bindParam(':user',$user);
         $con->bindParam(':nombre',$nombre);
-		$con->execute();
+	$con->execute();
         
         //Subir la imagen a la base de datos
         $var = "datos.ini";
-		$base = parse_ini_file($var);		
-		$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);   
-		$con = $php->prepare("INSERT INTO tablas VALUES (DEFAULT,:tex);");
-		$con->bindParam(':tex',$base64);
-		$con->execute();
+	$base = parse_ini_file($var);		
+	$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);   
+	$con = $php->prepare("INSERT INTO tablas VALUES (DEFAULT,:tex);");
+	$con->bindParam(':tex',$base64);
+	$con->execute();
         
         //Mostrar por pantalla la imgen del Usuario
         $var = "datos.ini";
-		$base = parse_ini_file($var);		
-		$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);
+	$base = parse_ini_file($var);		
+	$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);
         $con = $php->prepare("select url from tablas order by id desc limit 1");
-		$con->execute();
-		$registros = $con->fetchAll(PDO::FETCH_NUM);
-		$php = null;		
-		$n = count($registros);
-        $texto = $registros[0][0];
-  
-        
+	$con->execute();
+	$registros = $con->fetchAll(PDO::FETCH_NUM);
+	$php = null;		
+	$n = count($registros);
+        $texto = $registros[0][0];        
        ?>        
     <center>
         <img src =<?php echo "$texto"; ?> id='idImage' style="width: 224px; height: 224px;" align="center">
