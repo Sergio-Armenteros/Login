@@ -37,13 +37,13 @@
         $base = parse_ini_file("datos.ini");
         $php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);
         $con = $php->prepare("SELECT * from usuarios where Nombre = ?");
-		$con->execute([$nombre]);	
-	    $resultado = $con->fetchAll(PDO::FETCH_COLUMN, 1);
+	$con->execute([$nombre]);	
+	$resultado = $con->fetchAll(PDO::FETCH_COLUMN, 1);
         $resul = $con->fetchAll(PDO::FETCH_COLUMN, 2);
         $usuario = $resultado[0];  
         unset($con);
         $con = $php->prepare("SELECT * from usuarios where Nombre = ?");
-		$con->execute([$nombre]);	    
+	$con->execute([$nombre]);	    
         $resul = $con->fetchAll(PDO::FETCH_COLUMN, 2);        
         $pass = $resul[0];        
         
