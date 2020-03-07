@@ -46,7 +46,7 @@
 	$con->execute([$nombre]);	    
         $resul = $con->fetchAll(PDO::FETCH_COLUMN, 2);        
         $pass = $resul[0];        
-        
+    //El inicio de sesión   
     session_start();
     if(! ($_POST['username'] == $usuario && $hashed == $pass) )
     {
@@ -67,7 +67,7 @@
         $id = session_id();
         $user = $_SERVER['HTTP_USER_AGENT']; 
         
-        //Meter datos sobre ek Usuario en una base de datos
+        //Meter datos sobre el Usuario en una base de datos
         $var = "datos.ini";
 	$base = parse_ini_file($var);		
 	$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);		
